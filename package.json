@@ -1,7 +1,7 @@
 {
   "name": "psel-xp",
   "version": "1.0.0",
-  "description": "<p align=\"center\">     <img src=\"https://www.xpinc.com/assets/images/logo-inc-new.png\" height=\"30\" width=\"50\" alt=\"Logo da XP\">     <img src=\"https://www.integracaodaserra.com.br/wp-content/uploads/2021/09/9814df697eaf49815d7df109110815ff887b3457.png\" height=\"30\" width=\"50\" alt=\"Logo da Trybe\"> </p>",
+  "description": "O desafio apresenta uma aplicação de investimento em ações com algumas funcionalidades de conta digital.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,10 +11,23 @@
     "url": "git+https://github.com/lucasdvilar/psel-xp.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Lucas Vilar",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/lucasdvilar/psel-xp/issues"
   },
-  "homepage": "https://github.com/lucasdvilar/psel-xp#readme"
+  "homepage": "https://github.com/lucasdvilar/psel-xp#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^18.0.6",
+    "eslint": "^8.20.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-async-errors": "^3.1.1",
+    "mysql2": "^2.3.3"
+  }
 }
