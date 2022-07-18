@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://www.xpi.com.br/assets/images/xp-inc-new.png" height="30" width="50" alt="Logo da XP">
+    <img src="https://neofeed.com.br/wp-content/uploads/2021/08/LOGOXP-696x392.jpg" height="30" width="50" alt="Logo da XP">
     <img src="https://www.integracaodaserra.com.br/wp-content/uploads/2021/09/9814df697eaf49815d7df109110815ff887b3457.png" height="30" width="50" alt="Logo da Trybe">
 </p>
 
@@ -18,9 +18,14 @@
 - Usei ESLint para padronizar o código -> maior legibilidade e facilita a identificação de erros/problemas durante o desenvolvimento
 
 ## Como rodar
-- Para executar:
-    $ npm start
-- Para executar em modo de desenvolvimento:
-    $ npm run dev
-- Para compilar:
-    $ npm run build
+1. Clone o repositório
+- SSH: `git clone git@github.com:lucasdvilar/psel-xp.git`
+- HTTPS: `git clone https://github.com/lucasdvilar/psel-xp.git`
+
+2. Instale as dependências
+- `npm install`
+
+3. Opcões de execução/compilação
+- Para executar: `npm start`
+- Para executar em modo de desenvolvimento: `npm run dev`
+- Para compilar: `npm run build`
