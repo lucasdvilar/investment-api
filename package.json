@@ -1,0 +1,20 @@
+{
+  "name": "psel-xp",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">     <img src=\"https://www.xpinc.com/assets/images/logo-inc-new.png\" height=\"30\" width=\"50\" alt=\"Logo da XP\">     <img src=\"https://www.integracaodaserra.com.br/wp-content/uploads/2021/09/9814df697eaf49815d7df109110815ff887b3457.png\" height=\"30\" width=\"50\" alt=\"Logo da Trybe\"> </p>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasdvilar/psel-xp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucasdvilar/psel-xp/issues"
+  },
+  "homepage": "https://github.com/lucasdvilar/psel-xp#readme"
+}
