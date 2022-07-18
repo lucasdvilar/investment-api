@@ -18,3 +18,9 @@
 - Usei ESLint para padronizar o código -> maior legibilidade e facilita a identificação de erros/problemas durante o desenvolvimento
 
 ## Como rodar
+- Para executar:
+    $ npm start
+- Para executar em modo de desenvolvimento:
+    $ npm run dev
+- Para compilar:
+    $ npm run build

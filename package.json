@@ -4,6 +4,9 @@
   "description": "O desafio apresenta uma aplicação de investimento em ações com algumas funcionalidades de conta digital.",
   "main": "index.js",
   "scripts": {
+    "start": "npm run build && node ./dist/index",
+    "dev": "tsnd index.ts",
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
