@@ -4,7 +4,7 @@ import { IUser, IDbUser } from "../interfaces/IUser";
 class ClientModel {
   constructor(public connection: Pool) {}
 
-  public getByUsernameAndPw = async (user: IUser) => {
+  public getByUsernameAndPw = async (user: IUser): Promise<IDbUser> => {
     const { username, password } = user;
     const query = 'SELECT * FROM clients WHERE username = ? AND password = ?';
     const [rows] = await this.connection.execute(query, [username, password]);
