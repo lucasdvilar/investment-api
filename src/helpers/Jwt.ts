@@ -1,5 +1,5 @@
 import jwt, { SignOptions } from 'jsonwebtoken';
-import { IDbUser } from '../interfaces/IUser';
+import { IDbClient } from '../interfaces/IClient';
 import HttpException from './HttpException';
 
 class Jwt {
@@ -10,10 +10,9 @@ class Jwt {
     algorithm: 'HS256',
   }
 
-  public generateToken = (user: IDbUser) => jwt.sign(user, this.SECRET, this.jwtConfig);
+  public generateToken = (client: IDbClient) => jwt.sign(client, this.SECRET, this.jwtConfig);
 
   public authenticateToken = (token: string) => {
-    if (!token) throw new HttpException(401, 'Token not found');
     try {
       const decoded = jwt.verify(token, this.SECRET);
       return decoded;

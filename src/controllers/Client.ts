@@ -9,8 +9,8 @@ class ClientController {
   }
 
   public login = async (req: Request, res: Response) => {
-    const user = req.body;
-    const token = await this.clientService.login(user);
+    const client = req.body;
+    const token = await this.clientService.login(client);
     res.status(200).json({ token });
   }
 }
