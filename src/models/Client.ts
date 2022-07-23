@@ -6,7 +6,7 @@ class ClientModel {
 
   public getByUsernameAndPw = async (user: IUser): Promise<IDbUser> => {
     const { username, password } = user;
-    const query = 'SELECT * FROM clients WHERE username = ? AND password = ?';
+    const query = 'SELECT * FROM clients WHERE username = ? AND `password` = ?;';
     const [rows] = await this.connection.execute(query, [username, password]);
     const [clientInfo] = rows as IDbUser[];
     return clientInfo;

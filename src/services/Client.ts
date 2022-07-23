@@ -5,7 +5,7 @@ import ClientModel from "../models/Client";
 import connection from "../models/connection";
 
 class ClientService {
-  public model: ClientModel;
+  private model: ClientModel;
 
   constructor() {
     this.model = new ClientModel(connection);
