@@ -37,3 +37,8 @@
 - Para compilar: `npm run build`
 - ⚠ Caso opte por utilizar Docker, todos os comandos acima devem ser executados dentro do container
 - ⚠ Caso tenha saído: `docker exec -it psel-xp-container sh`
+
+4. Banco de dados
+- Subi o banco no Heroku através do add-on ClearDB
+- Diagrama ER:
+<img src="public/er_diagram.png" width="800px">
