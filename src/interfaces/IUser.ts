@@ -1,6 +1,9 @@
-interface IUser {
+export interface IUser {
   username: string;
   password: string;
 }
 
-export default IUser;
+export interface IDbUser extends IUser {
+  id: number;
+  balance: number;
+}
