@@ -3,12 +3,11 @@ import Joi from 'joi';
 import HttpException from '../helpers/HttpException';
 
 const validateInvestimentos = (req: Request, _res: Response, next: NextFunction) => {
-  const { codCliente, codAtivo, qtdeAtivo } = req.body;
+  const investment = req.body;
   const { error } = Joi.object({
-    codCliente: Joi.number().required(),
-    codAtivo: Joi.number().required(),
-    qtdeAtivo: Joi.number().required(),
-  }).validate({ codCliente, codAtivo, qtdeAtivo });
+    assetId: Joi.number().required(),
+    quantity: Joi.number().required(),
+  }).validate(investment);
   if (error) {
     throw new HttpException(400, error.details[0].message);
   }

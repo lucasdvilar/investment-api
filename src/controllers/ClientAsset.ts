@@ -5,15 +5,17 @@ class ClientAssetController {
   constructor(private clientAssetService: ClientAssetService = new ClientAssetService()) {}
 
   public purchase = async (req: Request, res: Response) => {
-    const { codCliente, codAtivo, qtdeAtivo } = req.body;
-    await this.clientAssetService.purchase(codCliente, codAtivo, qtdeAtivo);
-    res.status(201).end();
+    const { assetId, quantity } = req.body;
+    const { clientId } = res.locals;
+    const purchase = await this.clientAssetService.purchase({ clientId, assetId, quantity });
+    res.status(201).json(purchase);
   }
 
   public sale = async (req: Request, res: Response) => {
-    const { codCliente, codAtivo, qtdeAtivo } = req.body;
-    await this.clientAssetService.sale(codCliente, codAtivo, qtdeAtivo);
-    res.status(201).end();
+    const { assetId, quantity } = req.body;
+    const { clientId } = res.locals;
+    const sale = await this.clientAssetService.sale({ clientId, assetId, quantity });
+    res.status(201).json(sale);
   }
 }
 

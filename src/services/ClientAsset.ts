@@ -1,4 +1,5 @@
 import HttpException from "../helpers/HttpException";
+import { IInvestimento, IInvestment } from "../interfaces/IInvestment";
 import AssetModel from "../models/Asset";
 import ClientModel from "../models/Client";
 import ClientAssetModel from "../models/ClientAsset";
@@ -48,17 +49,19 @@ class ClientAssetService {
     return this.assetModel.update(assetId, newAssetQtt);
   }
 
-  public purchase = async (clientId: number, assetId: number, quantity: number) => {
+  public purchase = async (investment: IInvestment): Promise<IInvestimento> => {
+    const { clientId, assetId, quantity } = investment;
     await this.validatePurchase(clientId, assetId, quantity);
     const updatedBalance = this.updateBalance(clientId, assetId, quantity);
     const updatedAssetQtt = this.updateAsset(assetId, quantity);
     const createOrUpdate = this.checkPurchases(clientId, assetId, quantity);
     await Promise.all([updatedBalance, updatedAssetQtt, createOrUpdate]);
+    return { codCliente: clientId, codAtivo: assetId, qtdeAtivo: quantity };
   }
 
   private validateSale = async (clientId: number, assetId: number, quantity: number) => {
     const purchase = await this.clientAssetModel.getByIds(clientId, assetId);
-    if (purchase.quantity < quantity) {
+    if (!purchase || purchase.quantity < quantity) {
       throw new HttpException(422, 'Quantidade de ativo a ser vendida não pode ser maior que a quantidade disponível na carteira');
     }
   }
@@ -83,12 +86,14 @@ class ClientAssetService {
     return this.clientModel.update(clientId, newBalanceQtt);
   }
 
-  public sale = async (clientId: number, assetId: number, quantity: number) => {
+  public sale = async (investment: IInvestment): Promise<IInvestimento> => {
+    const { clientId, assetId, quantity } = investment;
     await this.validateSale(clientId, assetId, quantity);
     const updatedWallet = this.updateWallet(clientId, assetId, quantity);
     const updatedAssetQtt = this.addAssetQtt(assetId, quantity);
     const updatedBalance = this.addBalance(clientId, assetId, quantity);
     await Promise.all([updatedWallet, updatedAssetQtt, updatedBalance]);
+    return { codCliente: clientId, codAtivo: assetId, qtdeAtivo: quantity };
   }
 }
 
