@@ -95,6 +95,21 @@ class ClientAssetService {
     await Promise.all([updatedWallet, updatedAssetQtt, updatedBalance]);
     return { codCliente: clientId, codAtivo: assetId, qtdeAtivo: quantity };
   }
+
+  public getByClientId = async (id: number) => {
+    const clientAssets = await this.clientAssetModel.getByClientId(id);
+    if (!clientAssets) throw new HttpException(422, 'You have no assets.')
+    return clientAssets.map(async (clientAsset) => {
+      const assetId = clientAsset.asset_id;
+      const asset = await this.assetModel.getById(assetId);
+      return {
+        codCliente: id,
+        codAtivo: assetId,
+        qtdeAtivo: clientAsset.quantity,
+        valor: asset.price,
+      }
+    })
+  }
 }
 
 export default ClientAssetService;
