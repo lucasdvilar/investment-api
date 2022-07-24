@@ -6,7 +6,7 @@ import validateDeposit from "../middlewares/validateDeposit";
 const router = Router();
 
 router.post('/deposito', validateDeposit, new ClientController().deposit);
-router.post('/saque', auth);
+router.post('/saque', auth, new ClientController().withdrawal);
 router.get('/:cod-cliente', auth);
 
 export default router;

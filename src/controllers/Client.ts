@@ -19,6 +19,13 @@ class ClientController {
     const deposit = await this.clientService.deposit(clientId, amount);
     res.status(201).json(deposit);
   }
+
+  public withdrawal = async (req: Request, res: Response) => {
+    const { amount} = req.body;
+    const { clientId } = res.locals;
+    const withdrawal = await this.clientService.withdrawal(clientId, amount);
+    res.status(201).json(withdrawal);
+  }
 }
 
 export default ClientController;
