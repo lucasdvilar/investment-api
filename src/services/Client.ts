@@ -1,6 +1,6 @@
 import HttpException from "../helpers/HttpException";
 import Jwt from "../helpers/Jwt";
-import { IClient } from "../interfaces/IClient";
+import { IClient, ICliente } from "../interfaces/IClient";
 import IDeposit from '../interfaces/IDeposit';
 import ClientModel from "../models/Client";
 import connection from "../models/connection";
@@ -33,6 +33,11 @@ class ClientService {
     const newBalance = client.balance - amount;
     await this.model.update(clientId, newBalance);
     return { codCliente: clientId, valor: amount };
+  }
+
+  public getById = async (id: number): Promise<ICliente> => {
+    const client = await this.model.getById(id);
+    return { codCliente: client.id, saldo: client.balance };
   }
 }
 

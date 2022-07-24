@@ -12,3 +12,8 @@ export interface IJwtClient extends IDbClient {
   iat: number;
   exp: number;
 }
+
+export interface ICliente {
+  codCliente: number;
+  saldo: number;
+}
