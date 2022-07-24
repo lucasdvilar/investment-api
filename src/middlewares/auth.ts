@@ -9,7 +9,6 @@ const auth = (req: Request, res: Response, next: NextFunction) => {
   const clientInfo = new Jwt().authenticateToken(token) as IJwtClient;
   const clientId = clientInfo.id;
   res.locals.clientId = clientId;
-  // if (clientId !== req.body.codCliente) throw new HttpException(401, 'Unauthorized access.')
   next();
 };
 
