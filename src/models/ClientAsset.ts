@@ -20,6 +20,11 @@ class ClientAssetModel {
     const [clientAsset] = rows as IClientAsset[];
     return clientAsset;
   }
+
+  public delete = async (clientId: number, assetId: number) => {
+    const query = 'DELETE FROM clients_assets WHERE client_id = ? AND asset_id = ?;'
+    await this.connection.execute(query, [clientId, assetId]);
+  }
 }
 
 export default ClientAssetModel;

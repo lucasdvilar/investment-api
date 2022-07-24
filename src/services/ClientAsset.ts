@@ -55,6 +55,41 @@ class ClientAssetService {
     const createOrUpdate = this.checkPurchases(clientId, assetId, quantity);
     await Promise.all([updatedBalance, updatedAssetQtt, createOrUpdate]);
   }
+
+  private validateSale = async (clientId: number, assetId: number, quantity: number) => {
+    const purchase = await this.clientAssetModel.getByIds(clientId, assetId);
+    if (purchase.quantity < quantity) {
+      throw new HttpException(422, 'Quantidade de ativo a ser vendida não pode ser maior que a quantidade disponível na carteira');
+    }
+  }
+
+  private updateWallet = async (clientId: number, assetId: number, quantity: number) => {
+    const purchase = await this.clientAssetModel.getByIds(clientId, assetId);
+    const newQtt = purchase.quantity - quantity;
+    if (newQtt === 0) return this.clientAssetModel.delete(clientId, assetId);
+    return this.clientAssetModel.update(clientId, assetId, newQtt);
+  }
+
+  private addAssetQtt = async (assetId: number, quantity: number) => {
+    const asset = await this.assetModel.getById(assetId);
+    const newAssetQtt = asset.quantity + quantity;
+    return this.assetModel.update(assetId, newAssetQtt);
+  }
+
+  private addBalance = async (clientId: number, assetId: number, quantity: number) => {
+    const client = await this.clientModel.getById(clientId);
+    const asset = await this.assetModel.getById(assetId);
+    const newBalanceQtt = client.balance + asset.price * quantity;
+    return this.clientModel.update(clientId, newBalanceQtt);
+  }
+
+  public sale = async (clientId: number, assetId: number, quantity: number) => {
+    await this.validateSale(clientId, assetId, quantity);
+    const updatedWallet = this.updateWallet(clientId, assetId, quantity);
+    const updatedAssetQtt = this.addAssetQtt(assetId, quantity);
+    const updatedBalance = this.addBalance(clientId, assetId, quantity);
+    await Promise.all([updatedWallet, updatedAssetQtt, updatedBalance]);
+  }
 }
 
 export default ClientAssetService;
