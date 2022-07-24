@@ -25,6 +25,12 @@ class ClientAssetModel {
     const query = 'DELETE FROM clients_assets WHERE client_id = ? AND asset_id = ?;'
     await this.connection.execute(query, [clientId, assetId]);
   }
+
+  public getByClientId = async (clientId: number): Promise<IClientAsset[]> => {
+    const [rows] = await this.connection.execute('SELECT * FROM clients_assets WHERE id = ?;', [clientId]);
+    const clientAssets = rows as IClientAsset[];
+    return clientAssets;
+  }
 }
 
 export default ClientAssetModel;
