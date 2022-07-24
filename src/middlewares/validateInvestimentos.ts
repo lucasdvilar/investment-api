@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import Joi from 'joi';
 import HttpException from '../helpers/HttpException';
 
-const validateInvestimentos = (req: Request, _res: Response, next: NextFunction) => {
+const validateInvestments = (req: Request, _res: Response, next: NextFunction) => {
   const investment = req.body;
   const { error } = Joi.object({
     assetId: Joi.number().required(),
@@ -14,4 +14,4 @@ const validateInvestimentos = (req: Request, _res: Response, next: NextFunction)
   next();
 };
 
-export default validateInvestimentos;
+export default validateInvestments;
