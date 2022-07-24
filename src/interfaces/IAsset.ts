@@ -1,6 +1,6 @@
 interface IAsset {
-  client_id: number;
-  asset_id: number;
+  id: number;
+  price: number;
   quantity: number;
 }
 
