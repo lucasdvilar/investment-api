@@ -9,6 +9,11 @@ class AssetModel {
     const [asset] = rows as IAsset[];
     return asset;
   }
+
+  public update = async (id: number, quantity: number) => {
+    const query = 'UPDATE assets SET quantity = ? WHERE id = ?;';
+    await this.connection.execute(query, [id, quantity]);
+  }
 }
 
 export default AssetModel;
