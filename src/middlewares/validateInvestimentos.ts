@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import Joi from 'joi';
 import HttpException from '../helpers/HttpException';
 
-const validateInvestimentos = async (req: Request, _res: Response, next: NextFunction) => {
+const validateInvestimentos = (req: Request, _res: Response, next: NextFunction) => {
   const { codCliente, codAtivo, qtdeAtivo } = req.body;
   const { error } = Joi.object({
     codCliente: Joi.number().required(),

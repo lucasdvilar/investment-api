@@ -8,7 +8,7 @@ const auth = (req: Request, _res: Response, next: NextFunction) => {
   if (!token) throw new HttpException(401, 'Token not found.')
   const clientInfo = new Jwt().authenticateToken(token) as IJwtClient;
   const clientId = clientInfo.id;
-  req.body.codCliente = clientId;
+  if (clientId !== req.body.codCliente) throw new HttpException(401, 'Unauthorized access.')
   next();
 };
 
