@@ -24,6 +24,16 @@ class ClientService {
     await this.model.update(clientId, newBalance);
     return { codCliente: clientId, valor: amount };
   }
+
+  public withdrawal = async (clientId: number, amount: number) => {
+    const client = await this.model.getById(clientId);
+    if (client.balance < amount) {
+      throw new HttpException(422, 'Quantidade a ser sacada não poderá ser maior que o saldo da conta');
+    }
+    const newBalance = client.balance - amount;
+    await this.model.update(clientId, newBalance);
+    return { codCliente: clientId, valor: amount };
+  }
 }
 
 export default ClientService;
