@@ -2,7 +2,7 @@ import { Pool } from "mysql2/promise";
 import IClientAsset from "../interfaces/IClientAsset";
 
 class ClientAssetModel {
-  constructor(public connection: Pool) {}
+  constructor(private connection: Pool) {}
 
   public create = async (client_id: number, asset_id: number, quantity: number) => {
     const query = 'INSERT INTO clients_assets (client_id, asset_id, quantity) VALUES (?, ?, ?);';
@@ -27,7 +27,8 @@ class ClientAssetModel {
   }
 
   public getByClientId = async (clientId: number): Promise<IClientAsset[]> => {
-    const [rows] = await this.connection.execute('SELECT * FROM clients_assets WHERE client_id = ?;', [clientId]);
+    const query = 'SELECT * FROM clients_assets WHERE client_id = ?;';
+    const [rows] = await this.connection.execute(query, [clientId]);
     const clientAssets = rows as IClientAsset[];
     return clientAssets;
   }

@@ -2,7 +2,7 @@ import { Pool } from "mysql2/promise";
 import { IClient, IDbClient } from "../interfaces/IClient";
 
 class ClientModel {
-  constructor(public connection: Pool) {}
+  constructor(private connection: Pool) {}
 
   public getByUsernameAndPw = async (client: IClient): Promise<IDbClient> => {
     const { username, password } = client;
