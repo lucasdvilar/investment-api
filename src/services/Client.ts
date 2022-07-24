@@ -20,6 +20,7 @@ class ClientService {
 
   public deposit = async (clientId: number, amount: number): Promise<IDeposit> => {
     const client = await this.model.getById(clientId);
+    if (!client) throw new HttpException(422, 'This client does not exist.')
     const newBalance = client.balance + amount;
     await this.model.update(clientId, newBalance);
     return { codCliente: clientId, valor: amount };
