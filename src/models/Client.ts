@@ -11,6 +11,16 @@ class ClientModel {
     const [clientInfo] = rows as IDbClient[];
     return clientInfo;
   }
+
+  public getById = async (id: number): Promise<IDbClient> => {
+    const [rows] = await this.connection.execute('SELECT * FROM clients WHERE id = ?;', [id]);
+    const [clientInfo] = rows as IDbClient[];
+    return clientInfo;
+  }
+
+  public update = async (id: number, balance: number) => {
+    await this.connection.execute('UPDATE clients SET balance = ? WHERE id = ?;', [balance, id]);
+  }
 }
 
 export default ClientModel;
