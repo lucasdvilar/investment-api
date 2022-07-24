@@ -4,7 +4,7 @@ import HttpException from "../helpers/HttpException";
 const validateId = (req: Request, res: Response, next: NextFunction) => {
   const { id } = req.params;
   const { clientId } = res.locals;
-  if (Number(id) !== clientId) throw new HttpException(403, 'Forbidden access.')
+  if (Number(id) !== clientId) throw new HttpException(403, 'Forbidden access')
   next();
 }
 

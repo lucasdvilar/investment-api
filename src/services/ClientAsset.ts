@@ -20,7 +20,7 @@ class ClientAssetService {
     const clientInfo = await this.clientModel.getById(clientId);
     const asset = await this.assetModel.getById(assetId);
     const total = asset.price * quantity;
-    if (clientInfo.balance < total) throw new HttpException(422, 'You need more money!');
+    if (clientInfo.balance < total) throw new HttpException(422, 'You need more money');
     if (asset.quantity < quantity) {
       throw new HttpException(422, 'Quantidade de ativo a ser comprada não pode ser maior que a quantidade disponível na corretora');
     }
@@ -98,7 +98,7 @@ class ClientAssetService {
 
   public getByClientId = async (id: number) => {
     const clientAssets = await this.clientAssetModel.getByClientId(id);
-    if (!clientAssets) throw new HttpException(422, 'You have no assets.')
+    if (!clientAssets) throw new HttpException(422, 'You have no assets')
     const pricedClientAssets = await Promise.all(clientAssets.map(async (clientAsset) => {
       const assetId = clientAsset.asset_id;
       const asset = await this.assetModel.getById(assetId);
