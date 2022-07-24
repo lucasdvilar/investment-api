@@ -1,10 +1,8 @@
 import { Router } from "express";
+import ClientAssetController from "../controllers/ClientAsset";
 
 const router = Router();
 
-router.post('/comprar', (req, res) => {
-  console.log(req.body);
-  res.send('test')
-});
+router.post('/comprar', new ClientAssetController().purchase);
 
 export default router;

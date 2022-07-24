@@ -12,7 +12,7 @@ class AssetModel {
 
   public update = async (id: number, quantity: number) => {
     const query = 'UPDATE assets SET quantity = ? WHERE id = ?;';
-    await this.connection.execute(query, [id, quantity]);
+    await this.connection.execute(query, [quantity, id]);
   }
 }
 

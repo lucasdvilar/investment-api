@@ -5,19 +5,19 @@ import ClientAssetModel from "../models/ClientAsset";
 import connection from "../models/connection";
 
 class ClientAssetService {
-  private ClientModel: ClientModel;
-  private AssetModel: AssetModel;
-  private ClientAssetModel: ClientAssetModel;
+  private clientModel: ClientModel;
+  private assetModel: AssetModel;
+  private clientAssetModel: ClientAssetModel;
 
   constructor() {
-    this.ClientModel = new ClientModel(connection);
-    this.AssetModel = new AssetModel(connection);
-    this.ClientAssetModel = new ClientAssetModel(connection);
+    this.clientModel = new ClientModel(connection);
+    this.assetModel = new AssetModel(connection);
+    this.clientAssetModel = new ClientAssetModel(connection);
   }
 
   private validatePurchase = async (clientId: number, assetId: number, quantity: number) => {
-    const clientInfo = await this.ClientModel.getById(clientId);
-    const asset = await this.AssetModel.getById(assetId);
+    const clientInfo = await this.clientModel.getById(clientId);
+    const asset = await this.assetModel.getById(assetId);
     const total = asset.price * quantity;
     if (clientInfo.balance < total) throw new HttpException(422, 'You need more money!');
     if (asset.quantity < quantity) {
@@ -26,26 +26,26 @@ class ClientAssetService {
   }
 
   private checkPurchases = async (clientId: number, assetId: number, quantity: number) => {
-    const purchase = await this.ClientAssetModel.getByIds(clientId, assetId);
+    const purchase = await this.clientAssetModel.getByIds(clientId, assetId);
     if (purchase) {
       const newQtt = purchase.quantity + quantity;
-      return this.ClientAssetModel.update(clientId, assetId, newQtt);
+      return this.clientAssetModel.update(clientId, assetId, newQtt);
     } else {
-      return this.ClientAssetModel.create(clientId, assetId, quantity);
+      return this.clientAssetModel.create(clientId, assetId, quantity);
     }
   }
 
   private updateBalance = async (clientId: number, assetId: number, quantity: number) => {
-    const client = await this.ClientModel.getById(clientId);
-    const asset = await this.AssetModel.getById(assetId);
+    const client = await this.clientModel.getById(clientId);
+    const asset = await this.assetModel.getById(assetId);
     const newBalanceQtt = client.balance - asset.price * quantity;
-    return this.ClientModel.update(clientId, newBalanceQtt);
+    return this.clientModel.update(clientId, newBalanceQtt);
   }
 
   private updateAsset = async (assetId: number, quantity: number) => {
-    const asset = await this.AssetModel.getById(assetId);
+    const asset = await this.assetModel.getById(assetId);
     const newAssetQtt = asset.quantity - quantity;
-    return this.AssetModel.update(assetId, newAssetQtt);
+    return this.assetModel.update(assetId, newAssetQtt);
   }
 
   public purchase = async (clientId: number, assetId: number, quantity: number) => {
