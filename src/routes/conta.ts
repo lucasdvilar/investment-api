@@ -9,6 +9,6 @@ const router = Router();
 
 router.post('/deposito', validateDeposit, new ClientController().deposit);
 router.post('/saque', auth, validateWithdrawal, new ClientController().withdrawal);
-router.get('/:id', auth, validateId);
+router.get('/:id', auth, validateId, new ClientController().getById);
 
 export default router;

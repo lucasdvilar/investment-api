@@ -21,10 +21,16 @@ class ClientController {
   }
 
   public withdrawal = async (req: Request, res: Response) => {
-    const { amount} = req.body;
+    const { amount } = req.body;
     const { clientId } = res.locals;
     const withdrawal = await this.clientService.withdrawal(clientId, amount);
     res.status(201).json(withdrawal);
+  }
+
+  public getById = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const client = await this.clientService.getById(Number(id));
+    res.status(200).json(client);
   }
 }
 
