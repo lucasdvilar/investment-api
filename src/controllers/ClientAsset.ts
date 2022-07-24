@@ -17,6 +17,12 @@ class ClientAssetController {
     const sale = await this.clientAssetService.sale({ clientId, assetId, quantity });
     res.status(201).json(sale);
   }
+
+  public getByClientId = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const clientAssets = await this.clientAssetService.getByClientId(Number(id));
+    res.status(200).json(clientAssets);
+  }
 }
 
 export default ClientAssetController;

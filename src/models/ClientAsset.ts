@@ -27,7 +27,7 @@ class ClientAssetModel {
   }
 
   public getByClientId = async (clientId: number): Promise<IClientAsset[]> => {
-    const [rows] = await this.connection.execute('SELECT * FROM clients_assets WHERE id = ?;', [clientId]);
+    const [rows] = await this.connection.execute('SELECT * FROM clients_assets WHERE client_id = ?;', [clientId]);
     const clientAssets = rows as IClientAsset[];
     return clientAssets;
   }

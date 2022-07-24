@@ -99,7 +99,7 @@ class ClientAssetService {
   public getByClientId = async (id: number) => {
     const clientAssets = await this.clientAssetModel.getByClientId(id);
     if (!clientAssets) throw new HttpException(422, 'You have no assets.')
-    return clientAssets.map(async (clientAsset) => {
+    const pricedClientAssets = await Promise.all(clientAssets.map(async (clientAsset) => {
       const assetId = clientAsset.asset_id;
       const asset = await this.assetModel.getById(assetId);
       return {
@@ -108,7 +108,8 @@ class ClientAssetService {
         qtdeAtivo: clientAsset.quantity,
         valor: asset.price,
       }
-    })
+    }));
+    return pricedClientAssets;
   }
 }
 
