@@ -1,5 +1,5 @@
 import { Pool } from "mysql2/promise";
-import IAsset from "../interfaces/IAsset";
+import { IAsset } from "../interfaces/IAsset";
 
 class AssetModel {
   constructor(public connection: Pool) {}

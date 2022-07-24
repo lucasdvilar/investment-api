@@ -1,7 +1,11 @@
-interface IAsset {
+export interface IAsset {
   id: number;
   price: number;
   quantity: number;
 }
 
-export default IAsset;
+export interface IAtivo {
+  codAtivo: number;
+  qtdeAtivo: number;
+  valor: number;
+}
