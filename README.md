@@ -37,7 +37,7 @@
 > Sem Docker
 - `npm install`
 
-3. Defina as variáveis de ambiente num arquivo .env
+3. Defina as variáveis de ambiente do seu banco num arquivo .env
 
 3. Opcões de execução/compilação/teste
 - Para executar: `npm start`
@@ -54,8 +54,15 @@
 
 ## Endpoints
 - Fora os endpoints de depósito, login e listar ativos, todos os outros precisam de autenticação (feito com JWT)
-- Endpoints que pedem o código do cliente por parâmetro bloqueiam o acesso caso o usuário logado não seja o mesmo
+- Endpoints que recebem o código do cliente pela URL bloqueiam o acesso caso o usuário logado não seja o mesmo
 - Existem validações Joi em todos os métodos POST
+- POST investimentos/comprar: comprar ativos na conta logada (recebe assetId e quantity pelo body)
+- POST investimento/vender: vender ativos na conta logada (recebe assetId e quantity pelo body)
+- GET ativos/cliente/:id: visualizar ativos da conta logada (recebe id do cliente pela URL)
+- GET ativos/:id: visualizar ativos disponíveis na corretora (recebe id do ativo pela URL)
+- POST conta/deposito: deposita dinheiro em alguma conta (recebe clientId e amount pelo body)
+- POST conta/saque: saca dinheiro da conta logada (recebe amount pelo body)
+- GET conta/:id: visualiza saldo da conta logada (recebe id do cliente pela URL)
 
-## Deploy e documentação da API
+## Deploy
 - https://psel-xp-lucasdvilar.herokuapp.com/
