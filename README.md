@@ -9,6 +9,10 @@
 - O desafio apresenta uma aplicação de investimento em ações com algumas funcionalidades de conta digital.
 
 ## Funcionalidades
+- Compra/venda de ativos
+- Visualização de ativos disponíveis na carteira do cliente e na corretora
+- Visualização de saldo em conta
+- Depósito/saque
 
 ## Decisões
 - O README está em português. O código e os commits estão em inglês.
@@ -42,3 +46,7 @@
 - Subi o banco no Heroku através do add-on ClearDB
 - Diagrama ER:
 <img src="public/er_diagram.png" width="800px">
+
+5. Endpoints
+- Fora os endpoints de depósito, login e listar ativos, todos os outros precisam de autenticação (feito com JWT)
+- Endpoints que pedem o código do cliente por parâmetro bloqueiam o acesso caso o usuário logando não seja o mesmo
