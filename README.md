@@ -21,6 +21,8 @@
 - Decidi não usar TDD, pois priorizei os requisitos mínimos na fase de levantamento (testes unitários são requisitos adicionais)
 - Usei ESLint para padronizar o código -> maior legibilidade e facilita a identificação de erros/problemas durante o desenvolvimento
 - Dockerizei a aplicação para que ela funcione em qualquer ambiente
+- Testei com Jest pois apresenta a melhor documentação para uso com TS entre as ferramentas de teste que já utilizei
+- Usei Joi para facilitar as validações
 
 ## Como rodar
 1. Clone o repositório
@@ -35,18 +37,25 @@
 > Sem Docker
 - `npm install`
 
-3. Opcões de execução/compilação
+3. Defina as variáveis de ambiente num arquivo .env
+
+3. Opcões de execução/compilação/teste
 - Para executar: `npm start`
 - Para executar em modo de desenvolvimento: `npm run dev`
 - Para compilar: `npm run build`
+- Para testar: `npm test`
 - ⚠ Caso opte por utilizar Docker, todos os comandos acima devem ser executados dentro do container
 - ⚠ Caso tenha saído: `docker exec -it psel-xp-container sh`
 
-4. Banco de dados
+## Banco de dados
 - Subi o banco no Heroku através do add-on ClearDB
 - Diagrama ER:
 <img src="public/er_diagram.png" width="800px">
 
-5. Endpoints
+## Endpoints
 - Fora os endpoints de depósito, login e listar ativos, todos os outros precisam de autenticação (feito com JWT)
-- Endpoints que pedem o código do cliente por parâmetro bloqueiam o acesso caso o usuário logando não seja o mesmo
+- Endpoints que pedem o código do cliente por parâmetro bloqueiam o acesso caso o usuário logado não seja o mesmo
+- Existem validações Joi em todos os métodos POST
+
+## Deploy e documentação da API
+- https://psel-xp-lucasdvilar.herokuapp.com/
