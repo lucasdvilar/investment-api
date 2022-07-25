@@ -1,7 +1,7 @@
-import HttpException from "../helpers/HttpException";
-import { IAtivo } from "../interfaces/IAsset";
-import AssetModel from "../models/Asset";
-import connection from "../models/connection";
+import HttpException from '../helpers/HttpException';
+import { IAtivo } from '../interfaces/IAsset';
+import AssetModel from '../models/Asset';
+import connection from '../models/connection';
 
 class AssetService {
   constructor(private assetModel: AssetModel = new AssetModel(connection)) {}

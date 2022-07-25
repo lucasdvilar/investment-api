@@ -1,5 +1,5 @@
-import { Pool } from "mysql2/promise";
-import IClientAsset from "../interfaces/IClientAsset";
+import { Pool } from 'mysql2/promise';
+import IClientAsset from '../interfaces/IClientAsset';
 
 class ClientAssetModel {
   constructor(private connection: Pool) {}
@@ -22,7 +22,7 @@ class ClientAssetModel {
   }
 
   public delete = async (clientId: number, assetId: number) => {
-    const query = 'DELETE FROM clients_assets WHERE client_id = ? AND asset_id = ?;'
+    const query = 'DELETE FROM clients_assets WHERE client_id = ? AND asset_id = ?;';
     await this.connection.execute(query, [clientId, assetId]);
   }
 

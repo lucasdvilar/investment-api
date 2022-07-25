@@ -1,8 +1,8 @@
-import { Router } from "express";
-import AssetController from "../controllers/Asset";
-import ClientAssetController from "../controllers/ClientAsset";
-import auth from "../middlewares/auth";
-import validateId from "../middlewares/validateId";
+import { Router } from 'express';
+import AssetController from '../controllers/Asset';
+import ClientAssetController from '../controllers/ClientAsset';
+import auth from '../middlewares/auth';
+import validateId from '../middlewares/validateId';
 
 const router = Router();
 

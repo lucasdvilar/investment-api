@@ -1,9 +1,9 @@
-import HttpException from "../helpers/HttpException";
-import Jwt from "../helpers/Jwt";
-import { IClient, ICliente } from "../interfaces/IClient";
+import HttpException from '../helpers/HttpException';
+import Jwt from '../helpers/Jwt';
+import { IClient, ICliente } from '../interfaces/IClient';
 import IDeposit from '../interfaces/IDeposit';
-import ClientModel from "../models/Client";
-import connection from "../models/connection";
+import ClientModel from '../models/Client';
+import connection from '../models/connection';
 
 class ClientService {
   private model: ClientModel;
@@ -20,7 +20,7 @@ class ClientService {
 
   public deposit = async (clientId: number, amount: number): Promise<IDeposit> => {
     const client = await this.model.getById(clientId);
-    if (!client) throw new HttpException(422, 'This client does not exist')
+    if (!client) throw new HttpException(422, 'This client does not exist');
     const newBalance = client.balance + amount;
     await this.model.update(clientId, newBalance);
     return { codCliente: clientId, valor: amount };

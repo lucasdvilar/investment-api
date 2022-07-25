@@ -1,5 +1,5 @@
-import { Router } from "express";
-import ClientAssetController from "../controllers/ClientAsset";
+import { Router } from 'express';
+import ClientAssetController from '../controllers/ClientAsset';
 
 const router = Router();
 

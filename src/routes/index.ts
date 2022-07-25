@@ -1,6 +1,6 @@
-import { Router } from "express";
-import auth from "../middlewares/auth";
-import validateInvestments from "../middlewares/validateInvestimentos";
+import { Router } from 'express';
+import auth from '../middlewares/auth';
+import validateInvestments from '../middlewares/validateInvestimentos';
 import investimentoRouter from './investimentos';
 import loginRouter from './login';
 import contaRouter from './conta';

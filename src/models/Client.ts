@@ -1,5 +1,5 @@
-import { Pool } from "mysql2/promise";
-import { IClient, IDbClient } from "../interfaces/IClient";
+import { Pool } from 'mysql2/promise';
+import { IClient, IDbClient } from '../interfaces/IClient';
 
 class ClientModel {
   constructor(private connection: Pool) {}

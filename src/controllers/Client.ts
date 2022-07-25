@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import ClientService from "../services/Client";
+import { Request, Response } from 'express';
+import ClientService from '../services/Client';
 
 class ClientController {
   private clientService: ClientService;

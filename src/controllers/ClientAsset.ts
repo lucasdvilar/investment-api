@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import ClientAssetService from "../services/ClientAsset";
+import { Request, Response } from 'express';
+import ClientAssetService from '../services/ClientAsset';
 
 class ClientAssetController {
   constructor(private clientAssetService: ClientAssetService = new ClientAssetService()) {}
