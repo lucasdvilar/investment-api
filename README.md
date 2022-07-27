@@ -61,20 +61,11 @@
 <img src="public/er_diagram.png" width="800px">
 
 ## Documentação da API
-- Fora os endpoints de depósito, login e listar ativos, todos os outros precisam de autenticação (feito com JWT)
-- Endpoints que recebem o código do cliente pela URL bloqueiam o acesso caso o usuário logado não seja o mesmo
-- Existem validações Joi em todos os métodos POST
-- POST /investimentos/comprar: comprar ativos na conta logada (recebe assetId e quantity pelo body)
-- POST /investimento/vender: vender ativos na conta logada (recebe assetId e quantity pelo body)
-- GET /ativos/cliente/:id: visualizar ativos da conta logada (recebe id do cliente pela URL)
-- GET /ativos/:id: visualizar ativos disponíveis na corretora (recebe id do ativo pela URL)
-- POST /conta/deposito: deposita dinheiro em alguma conta (recebe clientId e amount pelo body)
-- POST /conta/saque: saca dinheiro da conta logada (recebe amount pelo body)
-- GET /conta/:id: visualiza saldo da conta logada (recebe id do cliente pela URL)
+- https://documenter.getpostman.com/view/21027257/UzXNVHyS
 
 ## Deploy
 - https://psel-xp-lucasdvilar.herokuapp.com/
 
 ## Melhorias
 - Realizar mais testes
-- Documentação da API com Swager
+- Adicionar novas funcionalidades
