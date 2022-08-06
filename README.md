@@ -1,9 +1,4 @@
-<p align="center">
-	<img src="https://www.meioemensagem.com.br/wp-content/uploads/2019/09/marca_final_XPinc-2-1024x357.jpg" height="30" width="50" alt="Logo da XP">
-	<img src="https://www.integracaodaserra.com.br/wp-content/uploads/2021/09/9814df697eaf49815d7df109110815ff887b3457.png" height="30" width="50" alt="Logo da Trybe">
-</p>
-
-# Desafio de Back-end - PSel XP/Trybe
+# Investment API
 
 ## Descrição
 - O desafio apresenta uma aplicação de investimento em ações com algumas funcionalidades de conta digital.
@@ -19,7 +14,7 @@
 - O projeto foi desenvolvido em TypeScript para garantir a tipagem estática e forte, promovendo um código mais seguro e mais fácil de refatorar (além do autocomplete :sweat_smile:)
 - Decidi não utilizar ORM para demonstrar o domínio na criação direta de tabelas no MySQL e no uso das queries
 - Decidi não usar TDD, pois priorizei os requisitos mínimos na fase de levantamento (testes unitários são requisitos adicionais)
-- Usei ESLint para padronizar o código -> maior legibilidade e facilita a identificação de erros/problemas durante o desenvolvimento
+- Usei ESLint (airbnb-base) para padronizar o código -> maior legibilidade e facilita a identificação de erros/problemas durante o desenvolvimento
 - Dockerizei a aplicação para que ela funcione em qualquer ambiente
 - Testei com Jest pois apresenta a melhor documentação para uso com TS entre as ferramentas de teste que já utilizei
 - Usei Joi para facilitar as validações
@@ -38,14 +33,7 @@
 - `npm install`
 
 3. Variáveis de ambiente
-- Caso queira criar seu banco (use o diagrama da seção Banco de dados como base), defina suas variáveis de ambiente
-- Para avaliação, aqui estão as variáveis com as credenciais do banco que subi:
-	- PORT=3000
-	- MYSQL_HOST=us-cdbr-east-06.cleardb.net
-	- MYSQL_USER=b87fa8e75e08a3
-	- MYSQL_PASSWORD=6232e331
-	- MYSQL_DATABASE=heroku_6efb7909b2f5454
-	- SECRET=secret
+- Crie seu banco (db.sql) e defina suas variáveis de ambiente num arquivo .env de acordo com .env.example
 
 3. Opcões de execução/compilação/teste
 - Para executar: `npm start`
@@ -67,5 +55,6 @@
 - https://psel-xp-lucasdvilar.herokuapp.com/
 
 ## Melhorias
+- Criptografia de senhas com Bcrypt
 - Realizar mais testes
 - Adicionar novas funcionalidades
