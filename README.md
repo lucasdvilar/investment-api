@@ -52,7 +52,7 @@
 - https://documenter.getpostman.com/view/21027257/UzXNVHyS
 
 ## Deploy
-- https://psel-xp-lucasdvilar.herokuapp.com/
+- https://investment-lucasdvilar.herokuapp.com/
 
 ## Melhorias
 - Criptografia de senhas com Bcrypt
