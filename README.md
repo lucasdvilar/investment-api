@@ -21,13 +21,13 @@
 
 ## Como rodar
 1. Clone o repositório
-- SSH: `git clone git@github.com:lucasdvilar/psel-xp.git`
-- HTTPS: `git clone https://github.com/lucasdvilar/psel-xp.git`
+- SSH: `git@github.com:lucasdvilar/investment-api.git`
+- HTTPS: `https://github.com/lucasdvilar/investment-api.git`
 
 2. Instale as dependências
 > Com Docker
-- `docker build -t psel-xp .`
-- `docker run -it -p 3000:3000 --name psel-xp-container psel-xp sh`
+- `docker build -t investment-api .`
+- `docker run -it -p 3000:3000 --name investment-api-container investment-api sh`
 - `npm install`
 > Sem Docker
 - `npm install`
@@ -41,7 +41,7 @@
 - Para compilar: `npm run build`
 - Para testar: `npm test`
 - ⚠ Caso opte por utilizar Docker, todos os comandos acima devem ser executados dentro do container
-- ⚠ Caso tenha saído: `docker exec -it psel-xp-container sh`
+- ⚠ Caso tenha saído: `docker exec -it investment-api-container sh`
 
 ## Banco de dados
 - Subi o banco no Heroku através do add-on ClearDB
